@@ -6,7 +6,9 @@
 #' @export
 #' @return an object of hiperres
 hiper_glm <- function(design, outcome){
-  result <- list()
-  class(result) <- "hiperres"
-  return(result)
+  # To do list: implement model fitting
+  warning("This function is not implemented yet")
+  hglm_out <- list()
+  class(hglm_out) <- "hglm"
+  return(hglm_out)
 }

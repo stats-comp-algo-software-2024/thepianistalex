@@ -1,9 +1,9 @@
 Package: hiperglm
-Title: It is a package for high performance glm fitting
+Title: High-performance logistic regression for large data sets
 Version: 0.0.0.9000
 Authors@R: 
     person("Lang", "Lang", , "llang7@jhu.edu", role = c("aut", "cre"))
-Description: Fit glm models with high performance, hopefully.
+Description: TBA
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)

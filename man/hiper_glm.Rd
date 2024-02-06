@@ -4,12 +4,14 @@
 \alias{hiper_glm}
 \title{Title the core fitting function for hiperglm package}
 \usage{
-hiper_glm(design, outcome)
+hiper_glm(design, outcome, model)
 }
 \arguments{
 \item{design}{design matrix}
 
 \item{outcome}{outcome vector}
+
+\item{model}{model to fit}
 }
 \value{
 an object of hiperres

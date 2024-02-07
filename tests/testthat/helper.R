@@ -56,13 +56,13 @@ simulate_data <- function(
   return(list(design = design, outcome = outcome, coef_true = coef_true))
 }
 
-compute_numerical_grad <- function(func, Beta, desgin, outcome, dx = .Machine$double.eps^(1/3)){
+compute_numerical_grad <- function(func, Beta, design, outcome, model, dx = .Machine$double.eps^(1/3)){
   D <- length(Beta)
   numerical_grad <- rep(0, D)
   for(d in 1:D){
     e_d <- rep(0, D)
     e_d[d] <- 1
-    numerical_grad[d] <- (func(Beta+dx*e_d, design, outcome) - func(Beta-dx*e_d, design, outcome))/(2*dx)
+    numerical_grad[d] <- (func(Beta+dx*e_d, design, outcome, model) - func(Beta-dx*e_d, design, outcome, model))/(2*dx)
   }
   return(numerical_grad)
 }

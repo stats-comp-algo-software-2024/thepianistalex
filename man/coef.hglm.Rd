@@ -11,6 +11,9 @@
 
 \item{...}{further arguments passed to or from other methods}
 }
+\value{
+the estimated coefficients of the model
+}
 \description{
 Title coef method for hglm object
 }

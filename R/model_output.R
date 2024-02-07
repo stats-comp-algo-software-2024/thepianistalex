@@ -4,8 +4,10 @@
 #' @param ... further arguments passed to or from other methods
 #'
 #' @export
+#' @return the estimated coefficients of the model
 coef.hglm <- function(hglm_out, ...){
-  warning("This function is not implemented yet")
+  warning("This function is still under development")
+  return(hglm_out[["coef"]])
 }
 
 #' Title vcov method for hglm object

@@ -13,6 +13,7 @@ hiper_glm <- function(design, outcome, model, option){
   if (!(model %in% supported_model)) {
     stop(sprintf("The model %s is not supported.", model))
   }
+  hglm_out <- list()
   hglm_out[["coef"]] <- find_mle(design, outcome, model, option)
   class(hglm_out) <- "hglm"
   return(hglm_out)

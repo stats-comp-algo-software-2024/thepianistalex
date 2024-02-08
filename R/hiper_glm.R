@@ -3,10 +3,11 @@
 #' @param design design matrix
 #' @param outcome outcome vector
 #' @param model model to fit
+#' @param option list of options
 #'
 #' @export
 #' @return an object of hglm
-hiper_glm <- function(design, outcome, model, option){
+hiper_glm <- function(design, outcome, model, option = list(mle_solver = 'linear')){
   warning("This function is still under development")
 
   supported_model <- c("linear", "logit")

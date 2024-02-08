@@ -1,7 +1,7 @@
 ##### The high level mle function
 find_mle <- function(design, outcome, model, option){
-  if (option[["mle_solver"]] == "least_sq"){
-    mle <- find_mle_least_sq(design, outcome)
+  if (option[["mle_solver"]] == "linear"){
+    mle <- find_mle_linear(design, outcome)
   } else if(option[["mle_solver"]] == "BFGS") {
     mle <- find_mle_BFGS(design, outcome, model)
   }
@@ -9,10 +9,10 @@ find_mle <- function(design, outcome, model, option){
 }
 
 ##### Least square solver
-find_mle_least_sq <- function(design, outcome){
-  R <- chol(t(design) %*% design)
-  z <- backsolve(R, t(design) %*% outcome, transpose = TRUE)
-  mle <- backsolve(R, z)
+find_mle_linear <- function(design, outcome){
+  L <- chol(t(design) %*% design)
+  z <- backsolve(L, t(design) %*% outcome, transpose = TRUE)
+  mle <- backsolve(L, z)
   return(mle)
 }
 

@@ -4,7 +4,7 @@
 \alias{hiper_glm}
 \title{Title the core fitting function for hiperglm package}
 \usage{
-hiper_glm(design, outcome, model)
+hiper_glm(design, outcome, model, option = list(mle_solver = "linear"))
 }
 \arguments{
 \item{design}{design matrix}
@@ -12,9 +12,11 @@ hiper_glm(design, outcome, model)
 \item{outcome}{outcome vector}
 
 \item{model}{model to fit}
+
+\item{option}{list of options}
 }
 \value{
-an object of hiperres
+an object of hglm
 }
 \description{
 Title the core fitting function for hiperglm package

@@ -3,17 +3,26 @@
 #' @param design design matrix
 #' @param outcome outcome vector
 #' @param model model to fit
+#' @param option list of options
 #'
 #' @export
-#' @return an object of hiperres
-hiper_glm <- function(design, outcome, model){
-  # To do list: implement model fitting
-  supported_models <- c("linear", "logit")
-  if(!(model %in% supported_models)){
-    stop(sprintf("Model %s is not supported", model))
+#' @return an object of hglm
+hiper_glm <- function(design, outcome, model, option = list(mle_solver = "linear")) {
+
+  supported_model <- c("linear")
+  if (!(model %in% supported_model)) {
+    stop(sprintf("The model %s is not supported.", model))
   }
-  warning("This function is not implemented yet")
+
   hglm_out <- list()
+
+  if (option[["mle_solver"]] == "linear") {
+    hglm_out[["coef"]] <- find_mle_linear(design, outcome)
+  } else if (option[["mle_solver"]] == "BFGS") {
+    hglm_out[["coef"]] <- find_mle_bfgs(design, outcome, model)
+  }
+
   class(hglm_out) <- "hglm"
+
   return(hglm_out)
 }

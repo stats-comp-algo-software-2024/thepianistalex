@@ -5,7 +5,7 @@
 #'
 #' @export
 #' @return the estimated coefficients of the model
-coef.hglm <- function(hglm_out, ...){
+coef.hglm <- function(hglm_out, ...) {
   warning("This function is still under development")
   return(hglm_out[["coef"]])
 }
@@ -16,7 +16,7 @@ coef.hglm <- function(hglm_out, ...){
 #' @param ... further arguments passed to or from other methods
 #'
 #' @export
-vcov.hglm <- function(hglm_out, ...){
+vcov.hglm <- function(hglm_out, ...) {
   warning("This function is not implemented yet")
 }
 
@@ -26,6 +26,6 @@ vcov.hglm <- function(hglm_out, ...){
 #' @param ... further arguments passed to or from other methods
 #'
 #' @export
-print.hglm <- function(hglm_out, ...){
+print.hglm <- function(hglm_out, ...) {
   print("This function is not implemented yet")
 }

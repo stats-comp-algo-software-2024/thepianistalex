@@ -5,13 +5,10 @@ test_that("numerical vs analytics gradient for linear model", {
   data <- simulate_data(n_obs, n_pred, model = model, seed = 721)
   design <- data$design
   outcome <- data$outcome
-  Beta <- data$coef_true
+  beta <- data$coef_true
 
-  # Compute the gradient using the analytical formula
-  gradient_analytical <- compute_gradient(Beta, design, outcome, model)
-
-  # Compute the gradient using the numerical formula
-  gradient_numerical <- compute_numerical_grad(compute_log_likelihood, Beta, design, outcome, model)
+  gradient_analytical <- compute_linear_gradient(beta, design, outcome)
+  gradient_numerical <- compute_numerical_grad(compute_linear_log_likelihood, beta, design, outcome)
 
   expect_true(are_all_close(gradient_analytical, gradient_numerical))
 })

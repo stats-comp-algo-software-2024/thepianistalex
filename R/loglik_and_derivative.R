@@ -43,7 +43,7 @@ compute_logit_gradient <- function(beta, design, outcome) {
 #' @noRd
 compute_logit_heassian <- function(beta, design, outcome) {
   pi <- 1/(1 + exp(-design %*% beta))
-  W <- diag(pi * (1 - pi))
+  W <- diag(as.vector(pi * (1 - pi)))
   hessian <- t(design) %*% W %*% design
 
   return(hessian)

@@ -1,7 +1,7 @@
 test_that("numerical vs analytics gradient for linear model", {
   n_obs <- 100
   n_pred <- 5
-  model <- 'linear'
+  model <- "linear"
   data <- simulate_data(n_obs, n_pred, model = model, seed = 721)
   design <- data$design
   outcome <- data$outcome
@@ -16,7 +16,7 @@ test_that("numerical vs analytics gradient for linear model", {
 test_that("numerical vs analytics gradient for logit model", {
   n_obs <- 100
   n_pred <- 5
-  model <- 'logit'
+  model <- "logit"
   data <- simulate_data(n_obs, n_pred, model = model, seed = 721)
   design <- data$design
   outcome <- data$outcome

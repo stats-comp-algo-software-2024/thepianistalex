@@ -4,7 +4,7 @@
 \alias{hiper_glm}
 \title{Title the core fitting function for hiperglm package}
 \usage{
-hiper_glm(design, outcome, model, option = list(mle_solver = "linear"))
+hiper_glm(design, outcome, model, option = NULL)
 }
 \arguments{
 \item{design}{design matrix}

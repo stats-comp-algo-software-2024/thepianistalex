@@ -9,23 +9,20 @@ find_mle_linear <- function(design, outcome) {
 
 #' newton’s method solver
 #' @noRd
-find_mle_newton <- function(design, outcome, beta_init = NULL, max_iter = 1000, chisq_tol = 0.01) {
+find_mle_newton <- function(design, outcome, beta_init = NULL, max_iter = 100, threshold = 1e-3) {
   p <- ncol(design)
   if (is.null(beta_init)) {
     beta_init <- rep(0, p)
   }
+  log_lik_null <- compute_logit_log_likelihood(rep(0, p), design, outcome)
   beta_old <- beta_init
-  threshold <- 0.5 * qchisq(chisq_tol, 1)
   converged <- FALSE
   for (i in 1:max_iter) {
     gradient <- compute_logit_gradient(beta_old, design, outcome)
     hessian <- compute_logit_heassian(beta_old, design, outcome)
     beta_new <- beta_old + solve(hessian, gradient)
-
-    log_lik_old <- compute_logit_log_likelihood(beta_old, design, outcome)
-    log_lik_new <- compute_logit_log_likelihood(beta_new, design, outcome)
-    if (abs(log_lik_new - log_lik_old) < threshold) {
-      converged <- TRUE
+    converged <- check_statistical_convergence(beta_old, beta_new, log_lik_null, p, design, outcome, threshold)
+    if (converged) {
       break
     } else {
       beta_old <- beta_new
